@@ -1,0 +1,2 @@
+# Zero external dependencies required!
+# Standard Python 3.8+ library is used (urllib, json, sqlite3, http.server).

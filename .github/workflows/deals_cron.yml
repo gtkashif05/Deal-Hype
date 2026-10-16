@@ -1,0 +1,26 @@
+name: DealHype 24x7 Autopilot
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  run-deals-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Execute Deal Check Cycle
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN || '8658347124:AAEVZcZNydWW5zcAdLImww7KUBHHkq6RwdQ' }}
+          TELEGRAM_CHANNEL: ${{ secrets.TELEGRAM_CHANNEL || '@DealHypeofficial' }}
+          EARNKARO_USER_ID: ${{ secrets.EARNKARO_USER_ID || '5721550' }}
+        run: |
+          python bot.py --once

@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+deals_history.db
+.system_generated/
+scratch/
